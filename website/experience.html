@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Experience — Horseriding — Nur A'isyah</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;600&family=Dancing+Script&display=swap" rel="stylesheet">
+<style>
+:root{--beige:#efe6dc;--navy:#0b2342;--muted:#85766a;--radius:14px;--shadow:0 12px 30px rgba(11,35,66,0.06)}
+*{box-sizing:border-box}body{margin:0;font-family:"Poppins",system-ui,Arial;background:var(--beige);color:var(--navy);-webkit-font-smoothing:antialiased}
+.topnav{position:fixed;left:18px;top:18px;z-index:80}
+.topnav a{display:inline-block;margin-right:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.95);text-decoration:none;color:var(--navy)}
+.container{max-width:1000px;margin:44px auto;padding:0 18px;position:relative}
+.hero{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+.card{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.himg{width:100%;height:320px;object-fit:cover;border-radius:12px;border:6px solid rgba(239,230,220,0.95)}
+.quote{margin-top:12px;padding:12px;border-radius:10px;background:rgba(239,230,220,0.6);font-style:italic;color:var(--muted)}
+/* horse emoji background layer */
+.horseLayer{position:fixed;right:0;top:40%;width:220px;height:220px;opacity:0.08;z-index:0;pointer-events:none}
+.horseLayer img{width:100%;height:100%;object-fit:contain}
+@media(max-width:880px){.hero{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="./index.html">Home</a>
+  <a href="./gallery.html">Gallery</a>
+  <a href="./bestmoment.html">Best Moment</a>
+  <a href="./contact.html">Contact</a>
+</nav>
+
+<!-- floating horse emoji (small) -->
+<div class="horseLayer" aria-hidden="true">
+  <!-- we use inline SVG horse-ish emoji created with CSS for consistent look -->
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+    <g transform="scale(1.4) translate(-10,-12)" fill="none" stroke="#0b2342" stroke-width="1.8">
+      <path d="M28 60 C50 40,72 38,86 46 C92 50,96 62,82 66 C68 70,44 68,36 72 C30 75,22 78,18 74"></path>
+      <circle cx="30" cy="48" r="2.2" fill="#0b2342"></circle>
+    </g>
+  </svg>
+</div>
+
+<div class="container">
+  <div class="hero" style="position:relative;z-index:6">
+    <div class="card">
+      <h2 style="font-family:'Abril Fatface',serif;margin-top:0">My horseriding story</h2>
+      <img src="./assets/horse_1.jpg" alt="horse" class="himg" onerror="this.style.opacity=.3">
+
+      <p style="color:var(--muted);margin-top:12px;line-height:1.6">
+        I started riding at 13, at AMS Equestrian Club in Serdang, a place where dust and sunlight weave into memories.
+        My father often brought me to the stables; watching him move with the horses planted a quiet longing in me.
+        The first time I climbed up, my hands trembled with fear and excitement. I wasn't confident but he stood beside me,
+        patient and steady. It was that steady presence that made me try again and again.
+      </p>
+
+      <p style="color:var(--muted);line-height:1.6">
+        One of my fondest days was an outride along the Pahang coastline where sand beneath the horse's hooves, the sea wind pulling at our clothes,
+        and the horizon a long promise. The rhythm of the ride felt like a slow conversation between rider and mount.
+      </p>
+
+      <div class="quote">"Trust is built slowly; confidence comes from calmness."</div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <h4 style="margin:0">Lessons from Riding</h4>
+        <ol style="color:var(--muted);margin-top:8px">
+          <li>Trust must be built, not demanded.</li>
+          <li>Confidence grows from calmness.</li>
+          <li>Communication isn't always words.</li>
+        </ol>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h4 style="margin:0">on 15 November 2024</h4>
+        <p style="color:var(--muted);font-size:14px;margin-top:8px"> <code>.</p>
+        <div style="border-radius:12px;overflow:hidden;margin-top:8px">
+          <video controls style="width:100%" poster="./assets/video-poster.jpg" onerror="this.style.display='horseride.mp4'">
+            <source src="./assets/horseride.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+</body>
+</html>

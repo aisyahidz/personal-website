@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact — Nur A'isyah</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--beige:#efe6dc;--navy:#0b2342;--muted:#85766a;--accent:#ff6f98}
+*{box-sizing:border-box}body{margin:0;font-family:"Poppins",system-ui,Arial;background:var(--beige);color:var(--navy);-webkit-font-smoothing:antialiased}
+.container{max-width:840px;margin:48px auto;padding:0 18px}
+.topnav{position:fixed;left:18px;top:18px;z-index:80}
+.topnav a{display:inline-block;margin-right:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.95);text-decoration:none;color:var(--navy)}
+.center{display:grid;place-items:center;min-height:60vh}
+.flower-wrap{width:260px;height:260px;border-radius:999px;display:grid;place-items:center;background:linear-gradient(180deg,#fff,rgba(255,255,255,0.9));box-shadow:0 20px 60px rgba(11,35,66,0.06)}
+.flower{width:160px;height:160px;position:relative;cursor:pointer}
+.petal{position:absolute;width:64px;height:100px;left:50%;top:10%;transform-origin:50% 100%;border-radius:60px;background:linear-gradient(180deg,#ffd5e0,#ff8fb2);box-shadow:0 10px 30px rgba(111,29,27,0.08)}
+.center-dot{position:absolute;width:48px;height:48px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border:4px solid #ffd5e0;display:grid;place-items:center;font-weight:600;color:var(--navy)}
+.card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 18px 40px rgba(11,35,66,0.06);width:320px;text-align:center;display:none}
+.contact-line{margin:8px 0;color:var(--muted)}
+.note{color:var(--muted);font-size:13px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="./index.html">Home</a>
+  <a href="./gallery.html">Gallery</a>
+  <a href="./experience.html">Experience</a>
+  <a href="./bestmoment.html">Best Moment</a>
+</nav>
+
+<div class="container">
+  <div class="center">
+    <div style="text-align:center;margin-bottom:18px;color:var(--muted)">
+      <h2 style="margin:6px 0">Contact</h2>
+      <div>Touch the flower to bloom and reveal contact details</div>
+    </div>
+
+    <div class="flower-wrap">
+      <div class="flower" id="flower" role="button" aria-pressed="false" tabindex="0">
+        <!-- 6 petals -->
+        <div class="petal" style="transform:translate(-50%,-20%) rotate(0deg)"></div>
+        <div class="petal" style="transform:translate(-50%,-20%) rotate(60deg)"></div>
+        <div class="petal" style="transform:translate(-50%,-20%) rotate(120deg)"></div>
+        <div class="petal" style="transform:translate(-50%,-20%) rotate(180deg)"></div>
+        <div class="petal" style="transform:translate(-50%,-20%) rotate(240deg)"></div>
+        <div class="petal" style="transform:translate(-50%,-20%) rotate(300deg)"></div>
+        <div class="center-dot">Contact</div>
+      </div>
+
+      <div class="card" id="contactCard" aria-hidden="true" style="margin-top:16px">
+        <h3 style="margin:0">Get in touch</h3>
+        <div class="contact-line">Email: <strong>anur43007@gmail.com</strong></div>
+        <div class="contact-line">Instagram: <em>@aisyahhhidz</em> </div>
+        <div class="contact-line">Phone: <em>+60-17 865 4764</em> </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* flower bloom animation */
+const flower = document.getElementById('flower');
+const petals = flower.querySelectorAll('.petal');
+const card = document.getElementById('contactCard');
+let bloomed = false;
+
+function bloom(){
+  if(bloomed) return;
+  bloomed = true; flower.setAttribute('aria-pressed','true');
+  petals.forEach((p,i)=>{
+    p.style.transition = 'transform .6s cubic-bezier(.2,.9,.3,1), opacity .6s';
+    p.style.transform = `translate(-50%,-40%) rotate(${i*60}deg) scale(1.1)`;
+  });
+  setTimeout(()=>{ card.style.display='block'; card.style.opacity=0; card.style.transition='opacity .5s ease'; requestAnimationFrame(()=>card.style.opacity=1); }, 480);
+}
+
+function closeCard(){
+  if(!bloomed) return;
+  bloomed=false; flower.setAttribute('aria-pressed','false');
+  petals.forEach((p,i)=>{
+    p.style.transform = `translate(-50%,-20%) rotate(${i*60}deg) scale(1)`;
+  });
+  card.style.transition='opacity .3s'; card.style.opacity=0;
+  setTimeout(()=>card.style.display='none',350);
+}
+
+flower.addEventListener('click', ()=>{ if(!bloomed) bloom(); else closeCard(); });
+flower.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); if(!bloomed) bloom(); else closeCard(); } });
+
+</script>
+</body>
+</html>

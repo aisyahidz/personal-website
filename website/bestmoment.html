@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Best Moment 2025 — Mama's 53rd Birthday</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--beige:#efe6dc;--navy:#0b2342;--muted:#85766a;--shadow:0 12px 30px rgba(11,35,66,0.06)}
+*{box-sizing:border-box}body{margin:0;font-family:"Poppins",system-ui,Arial;background:var(--beige);color:var(--navy);-webkit-font-smoothing:antialiased}
+.topnav{position:fixed;left:18px;top:18px;z-index:80}
+.topnav a{display:inline-block;margin-right:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.95);text-decoration:none;color:var(--navy)}
+.container{max-width:980px;margin:36px auto;padding:0 18px;position:relative}
+.card{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px}
+.thumb{width:100%;height:150px;object-fit:cover;border-radius:10px;border:6px solid rgba(239,230,220,0.95)}
+.small{color:var(--muted);line-height:1.6}
+#loveCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<canvas id="loveCanvas"></canvas>
+
+<nav class="topnav">
+  <a href="./index.html">Home</a>
+  <a href="./experience.html">Experience</a>
+  <a href="./gallery.html">Gallery</a>
+  <a href="./contact.html">Contact</a>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <h2 style="font-family:'Abril Fatface',serif;margin-top:0">The Best Moment of 2025 — Mama's 53rd Birthday Surprise</h2>
+
+    <p class="small">It happened at <strong>Café Halzan, Penang</strong>.I planned everything quietly from the birthday message written on a waffle to the table decorations I coordinated with the café staff. In the middle of dinner, the staff walked toward our table carrying the decorated waffle and began singing <em>Happy Birthday</em>. Mama froze, laughed, and then became speechless, it is the kind of quiet that shows someone is deeply touched.</p>
+
+    <p class="small">For me, the most touching part was watching her smile so genuinely. Seeing her happy felt like the truest kind of fulfilment, which a reminder that making your mother smile is one of the purest forms of love.</p>
+
+    <div class="grid">
+      <img src="./assets/mama_1.jpg" alt="mama1" class="thumb" onerror="this.style.opacity=.3">
+      <img src="./assets/mama_2.jpg" alt="mama2" class="thumb" onerror="this.style.opacity=.3">
+      <img src="./assets/mama_3.jpg" alt="mama3" class="thumb" onerror="this.style.opacity=.3">
+      <img src="./assets/mama_4.jpg" alt="mama4" class="thumb" onerror="this.style.opacity=.3">
+    </div>
+
+    <div style="margin-top:12px;font-style:italic;color:var(--muted)">"If happiness had a shape, it would look like her smile !"</div>
+  </div>
+</div>
+
+<script>
+/* small floating little hearts for warm mood */
+const c = document.getElementById('loveCanvas');
+const ctx = c.getContext('2d');
+function resizeLove(){ c.width = innerWidth; c.height = innerHeight;}
+resizeLove(); window.addEventListener('resize', resizeLove);
+
+const particles = [];
+function makeLove(){
+  particles.push({
+    x: Math.random()*innerWidth,
+    y: innerHeight + Math.random()*200,
+    r: 6+Math.random()*16,
+    vy: 0.3+Math.random()*0.6,
+    alpha: 0.06+Math.random()*0.12
+  });
+  if(particles.length>28) particles.shift();
+}
+setInterval(makeLove, 240);
+function drawLove(){
+  ctx.clearRect(0,0,c.width,c.height);
+  for(let p of particles){
+    p.y -= p.vy;
+    ctx.globalAlpha = p.alpha;
+    ctx.fillStyle = '#ff99b8';
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    ctx.bezierCurveTo(p.x - 6, p.y - 8, p.x - 18, p.y + 4, p.x, p.y + 16);
+    ctx.bezierCurveTo(p.x + 18, p.y + 4, p.x + 6, p.y - 8, p.x, p.y);
+    ctx.fill();
+  }
+  requestAnimationFrame(drawLove);
+}
+drawLove();
+</script>
+</body>
+</html>
